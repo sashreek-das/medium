@@ -88,12 +88,12 @@ blogRouter.put('/', async (c) => {
 
 })
 
-blogRouter.get("/", async(c) => {
+blogRouter.get("/bulk", async(c) => {
     const prisma = new PrismaClient({
         datasourceUrl: c.env?.DATABASE_URL,
     }).$extends(withAccelerate());
 
-    const posts = prisma.post.findMany({});
+    const posts = await prisma.post.findMany();
 
-    return c.json(posts)
+    return c.json({posts})
 })
