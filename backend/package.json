@@ -8,8 +8,9 @@
     "@prisma/client": "^5.16.1",
     "@prisma/extension-accelerate": "^1.1.0",
     "@sashreek-das/common": "^1.0.0",
+    "cors": "^2.8.5",
     "hono": "^4.4.9",
-    "prisma": "^5.16.0"
+    "prisma": "^5.16.1"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240529.0",
