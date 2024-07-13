@@ -12,28 +12,17 @@ export const userRouter  = new Hono<{
         JWT_SECRET: string;
     }
 }>();
-// userRouter.get('/allUsers', async (c) => {
-//     try {
-//         const posts = await prisma.user.findUnique({
-//             where:{
-//                 id
-//             }
-//         });
-//         return c.json(posts);
-//     } catch (e) {
-//         c.status(500);
-//         return c.json({ error: 'Error fetching users' });
-//     }
-// });
+userRouter.get('/allUsers', async (c) => {
+    const prisma = new PrismaClient({
+        datasourceUrl: c.env.DATABASE_URL,
+    }).$extends(withAccelerate());
+
+    const users = await prisma.user.findMany()
+
+    return c.json({users})
+});
 userRouter.post('/signup', async (c) => {
     const body = await c.req.json();
-    // const { success } = SignupInput.safeParse(body)
-    // if(!success){
-    //     c.status(411);
-    //     return c.json({
-    //         mssg: "wrong inputs"
-    //     })
-    // }
     const prisma = new PrismaClient({
         datasourceUrl: c.env.DATABASE_URL,
     }).$extends(withAccelerate());
