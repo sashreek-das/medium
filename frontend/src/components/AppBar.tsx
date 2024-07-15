@@ -10,7 +10,7 @@ export const Appbar = () => {
                 </div>
             </Link>
             <div className="flex items-center space-x-4">
-                <Link to = {`/publish`}>
+                <Link to={`/publish`}>
                     <button
                         type="button"
                         className="text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-3 focus:ring-gray-500 font-medium rounded-full text-xs px-4 py-2 text-center mb-2 shadow-lg"
@@ -18,6 +18,9 @@ export const Appbar = () => {
                         New Blog
                     </button>
 
+                </Link>
+                <Link to={`/signin`}>
+                    <button type="button" onClick={() => localStorage.removeItem("token")}>Logout</button>
                 </Link>
 
                 <Avatar name="harkirat" />
