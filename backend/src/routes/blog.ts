@@ -108,3 +108,15 @@ blogRouter.get("/bulk", async(c) => {
 
     return c.json({posts})
 })
+
+
+// blogRouter.get("/yourBlogs", async(c)=>{
+//     const prisma = new PrismaClient({
+//         datasourceUrl: c.env?.DATABASE_URL,
+//     }).$extends(withAccelerate());
+//     const yourPosts = await prisma.post.findMany({
+//         where:{
+//             email:true
+//         }
+//     })
+// })

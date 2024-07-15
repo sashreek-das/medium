@@ -6,7 +6,7 @@ import { SignupInput } from '@sashreek-das/common'
 const prisma = new PrismaClient()
 
 // Create the main Hono app
-export const userRouter  = new Hono<{
+export const userRouter = new Hono<{
     Bindings: {
         DATABASE_URL: string;
         JWT_SECRET: string;
@@ -19,7 +19,7 @@ userRouter.get('/allUsers', async (c) => {
 
     const users = await prisma.user.findMany()
 
-    return c.json({users})
+    return c.json({ users })
 });
 userRouter.post('/signup', async (c) => {
     const body = await c.req.json();
@@ -27,19 +27,24 @@ userRouter.post('/signup', async (c) => {
         datasourceUrl: c.env.DATABASE_URL,
     }).$extends(withAccelerate());
 
+    if (!body.username && !body.password) {
+        return c.text("wrong inputs")
+    }
 
-    const user = await prisma.user.create({
-        data: {
-            username: body.username,
-            password: body.password,
-        },
-    });
+    else {
+        const user = await prisma.user.create({
+            data: {
+                username: body.username,
+                password: body.password,
+            },
+        });
+        const token = await sign({ id: user.id }, c.env.JWT_SECRET)
 
-    const token = await sign({ id: user.id }, c.env.JWT_SECRET)
+        return c.json({
+            jwt: token
+        })
+    }
 
-    return c.json({
-        jwt: token
-    })
 })
 
 userRouter.post('/signin', async (c) => {
