@@ -2,6 +2,7 @@
 import { Appbar } from "../components/AppBar"
 import { BlogCard } from "../components/BlogCard"
 import { Loader } from "../components/Loader";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useBlog, useBlogs } from "../hooks"
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
