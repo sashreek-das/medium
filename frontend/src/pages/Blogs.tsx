@@ -3,8 +3,7 @@ import { Appbar } from "../components/AppBar"
 import { BlogCard } from "../components/BlogCard"
 import { Loader } from "../components/Loader";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { useBlog, useBlogs } from "../hooks"
-import Skeleton from 'react-loading-skeleton';
+import { useBlogs } from "../hooks"
 import 'react-loading-skeleton/dist/skeleton.css';
 export const Blogs = () => {
     const {loading, blogs} = useBlogs();
@@ -12,17 +11,15 @@ export const Blogs = () => {
         return <Loader/>
     }
     return <div>
-        <Appbar/>
-        <div className="flex justify-center">
-            <div className="justify-center">
-                {blogs.map(blog =>  <BlogCard
+        <Appbar />
+        <div  className="flex justify-center">
+            <div>
+                {blogs.map(blog => <BlogCard
                     id={blog.id}
-                    authorName={blog.author.name || "anonymous"}
+                    authorName={blog.author.name || "Anonymous"}
                     title={blog.title}
                     content={blog.content}
-                    publishedDate={"12th feb"}
-                /> )}
-                
+                />)}
             </div>
         </div>
     </div>
