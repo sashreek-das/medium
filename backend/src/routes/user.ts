@@ -34,6 +34,7 @@ userRouter.post('/signup', async (c) => {
     else {
         const user = await prisma.user.create({
             data: {
+                name: body.name,
                 username: body.username,
                 password: body.password,
             },
@@ -67,4 +68,16 @@ userRouter.post('/signin', async (c) => {
 
     const jwt = await sign({ id: user.id }, c.env.JWT_SECRET);
     return c.json({ jwt });
+})
+
+userRouter.get("/yourBlogs", async (c) => {
+    const prisma = new PrismaClient({
+        datasourceUrl: c.env?.DATABASE_URL,
+    }).$extends(withAccelerate());
+    const yourPosts = await prisma.post.findMany({
+        where:{
+            
+        }
+    })
+    return c.json({ yourPosts })
 })

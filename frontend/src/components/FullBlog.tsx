@@ -3,6 +3,8 @@ import { Appbar } from "./AppBar"
 // import { Avatar } from "./BlogCard"
 
 export const FullBlog = ({ blog }: {blog: Blog}) => {
+    const currentDate = new Date().toLocaleDateString();
+
         console.log(blog);
     return <div>
         <Appbar />
@@ -13,7 +15,7 @@ export const FullBlog = ({ blog }: {blog: Blog}) => {
                         {blog.title}
                     </div>
                     <div className="text-slate-500 pt-2">
-                        Post on 2nd December 2023
+                    {currentDate}
                     </div>
                     <div className="pt-4">
                         {blog.content}

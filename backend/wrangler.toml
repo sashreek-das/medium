@@ -3,8 +3,7 @@ compatibility_date = "2023-12-01"
 
 [vars]
 
-DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiZWQyMjA4ZTYtMTE0YS00OGNlLWFmOWUtNjZmYjA5ZWE5YzEzIiwidGVuYW50X2lkIjoiNDZjY2EwY2QzOGFhY2JiZWZkZGEzNDA1NzQwYjliNTViODI4MDliMDdjYWQwOTIyMWU2YjkzZGNkYzJmN2JhMSIsImludGVybmFsX3NlY3JldCI6ImRiY2Y2YTZlLTFkNGYtNDljNC05YWNkLWU0MjJkYmI1ODFiNSJ9.Wz-pSM4SWcyZK9KVnPTfZ9iCrEuuXA4GPpOYj1W1qlg"
-JWT_SECRET= "mySecretKey"
+
 # MY_VAR = "my-variable"
 
 # [[kv_namespaces]]

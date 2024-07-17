@@ -86,6 +86,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { SignupInput } from "@sashreek-das/common";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
+import Alert from '@mui/material/Alert';
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 export const Auth = ({ type }: { type: "signup" | "signin" }) => {
@@ -104,7 +106,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
             localStorage.setItem("token", jwt);
             navigate("/blogs");
         } catch (e) {
-            alert("Error while signing up");
+            alert("Incorrect credentials");
         }
     }
 
