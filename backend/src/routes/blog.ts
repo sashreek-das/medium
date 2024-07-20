@@ -110,13 +110,26 @@ blogRouter.get("/bulk", async(c) => {
 })
 
 
+blogRouter.delete('/get/del/:id',async(c)=>{
+    const id = c.req.param('id')
+    const prisma = new PrismaClient({
+        datasourceUrl: c.env?.DATABASE_URL,
+    }).$extends(withAccelerate());
+    const delPost = await prisma.post.delete({
+        where:{
+            id
+        }
+    })
+    return c.json({delPost})
+
+})
 // blogRouter.get("/yourBlogs", async(c)=>{
 //     const prisma = new PrismaClient({
 //         datasourceUrl: c.env?.DATABASE_URL,
 //     }).$extends(withAccelerate());
 //     const yourPosts = await prisma.post.findMany({
 //         select:{
-//             authorId:{
+//             name:{
 //                 post
 //             }
 //         }

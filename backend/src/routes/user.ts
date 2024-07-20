@@ -74,10 +74,15 @@ userRouter.get("/yourBlogs", async (c) => {
     const prisma = new PrismaClient({
         datasourceUrl: c.env?.DATABASE_URL,
     }).$extends(withAccelerate());
-    const yourPosts = await prisma.post.findMany({
+    const body = await c.req.json()
+    const yourPosts = await prisma.user.findMany({
         where:{
-            
+            name: body.name
+        },
+        include:{
+            posts:true
         }
     })
+    console.log(body.name)
     return c.json({ yourPosts })
 })
