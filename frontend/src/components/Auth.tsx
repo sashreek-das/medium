@@ -128,7 +128,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
                     {type === "signup" ? (
                         <LabelledInput
                             label="Name"
-                            placeholder="Harkirat Singh..."
+                            placeholder="Your Name"
                             onChange={(e) => {
                                 setPostInputs({
                                     ...postInputs,
@@ -139,7 +139,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
                     ) : null}
                     <LabelledInput
                         label="Username"
-                        placeholder="harkirat@gmail.com"
+                        placeholder="name@xyz.com"
                         onChange={(e) => {
                             setPostInputs({
                                 ...postInputs,
